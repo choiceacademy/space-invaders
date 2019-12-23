@@ -56,7 +56,7 @@ for enemy in enemies:
 	enemy.setposition(x,y)
 
 #declare enemy speed
-enemyspeed = 2
+enemyspeed = 3
 
 #create the player's bullet
 bullet = turtle.Turtle()
@@ -121,7 +121,6 @@ turtle.onkey(fire_bullet,"space")
 
 #main game loop
 while True:
-	
 	for enemy in enemies:
 		#move enemy
 		x = enemy.xcor()
@@ -130,18 +129,18 @@ while True:
 		
 		#move the enemy back and down
 		if enemy.xcor() > 280:
+			for e in enemies:
+				y = e.ycor()
+				y -= 40
+				e.sety(y)
 			enemyspeed *= -1
-			y = enemy.ycor()
-			y -= 40
-			enemy.sety(y)
-			
-
+                        
 		if enemy.xcor() < -280:
+			for e in enemies:
+				y = e.ycor()
+				y -= 40
+				e.sety(y)
 			enemyspeed*= -1
-			y = enemy.ycor()
-			y -= 40
-			enemy.sety(y)
-			
 			
 		#Check for a collision between a bullet and the enemy
 		if isCollision(bullet, enemy):
